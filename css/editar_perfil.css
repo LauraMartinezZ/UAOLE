@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif; 
+  background: linear-gradient(to bottom, #fdc6fd, #000743);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  min-width: 300px;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.3);
+  border: black;
+  padding: 50px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 400px; /* Ancho máximo del contenedor */
+  margin-top: 70px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.container img {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+/* Estilos para los iconos dentro de los campos de entrada */
+.container .input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.container .input-container i {
+  position: absolute;
+  top: 50%;
+  left: 15px; /* Ajustar la posición horizontal del icono */
+  transform: translateY(-50%);
+  color: #000743; /* Color de los iconos */
+}
+
+.container input {
+  background-color: #D9D9D9;
+  width: calc(100% - 20px); /* Ancho del input - ancho del padding izquierdo del icono */
+  padding: 10px 40px 10px 30px; /* Padding ajustado para acomodar los iconos */
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 30px;
+  box-sizing: border-box; /* Incluir el relleno y el borde en el ancho total */
+}
+
+.container button {
+  font-family: 'Montserrat'; 
+  width: 48%; /* Establecer el ancho de los botones */
+  padding: 10px;
+  border-radius: 30px;
+  border: none;
+  background-color: #000743;
+  color: white;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background-color: #fff;
+  color: #000743;
+}
+
+/* Alinear los botones horizontalmente */
+.container button:nth-child(2) {
+  margin-left: 4%; /* Añadir un margen izquierdo para separar los botones */
+}
+
+.input-container i {
+  position: absolute;
+  right: 195px;
+  bottom: -10px;
+  transform: translateY(-50%);
+}
+
+@media (min-width: 500px) {
+  .container {
+      margin: 0 auto; /* Centrar el contenedor */
+      margin-top: 70px;
+  }
+}

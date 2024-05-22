@@ -1,0 +1,186 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to bottom right, #fdc6fd, #001447); /* Degradado de morado a azul oscuro */
+  color: #fff; /* Color del texto blanco */
+}
+
+/* Estilos del contenedor principal */
+.container {
+  justify-content: flex-start; /* Alinear al inicio del contenedor */
+  align-items: flex-start; /* Alinear al principio del contenedor */
+  height: 100vh;
+  padding: 100px; /* Añadir un poco de espacio alrededor del contenido */
+}
+
+/* Estilos del contenido del encabezado */
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos del perfil */
+.perfil {
+  margin-right: 20px; /* Margen a la derecha del perfil */
+}
+
+.perfil img {
+  width: 200px; /* Reducir el tamaño de la imagen */
+  border-radius: 50%;
+}
+
+/* Estilos de los detalles */
+.detalles {
+  max-width: 600px;
+  margin-left: 20px;
+}
+
+.detalles h1 {
+  margin: 0;
+  font-size: 50px; /* Eliminar el margen superior e inferior */
+}
+
+
+/* Estilos del nombre de la cuenta */
+.nombre-cuenta {
+  font-size: 28px; /* Aumento del tamaño del nombre de la cuenta */
+  margin-bottom: 10px; /* Separación inferior del nombre de la cuenta */
+}
+
+.detalles h3 {
+  font-size: 36px; /* Aumento del tamaño del título */
+  margin-bottom: 20px;
+}
+
+.detalles p {
+  font-size: 24px; /* Aumento del tamaño del texto */
+  margin-bottom: 10px;
+}
+
+/* Estilos para los label */
+label {
+  font-size: 20px; /* Tamaño de fuente más grande */
+  font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilos para las cajas de texto y descripción */
+input[type="text"],
+textarea {
+  border: none; /* Elimina el borde predeterminado */
+  border-radius: 10px; /* Hace los bordes redondeados */
+  padding: 10px; /* Añade un poco de espacio alrededor del contenido */
+  background-color: rgba(255, 255, 255, 0.5); /* Hace el fondo semi-transparente */
+}
+
+textarea::placeholder {
+  color: #000; /* Color del texto del placeholder */
+}
+
+/* Estilos para el selector de categorías */
+select {
+  border: none; /* Elimina el borde predeterminado */
+  border-radius: 10px; /* Hace los bordes redondeados */
+  padding: 10px; /* Añade un poco de espacio alrededor del contenido */
+  background-color: rgba(255, 255, 255, 0.5); /* Hace el fondo semi-transparente */
+}
+
+/* Estilos para los botones */
+button,
+input[type="submit"] {
+  border: none; /* Elimina el borde predeterminado */
+  border-radius: 10px; /* Hace los bordes redondeados */
+  padding: 15px 30px; /* Aumento del padding */
+  background-color: #007bff;
+  color: #fff; /* Color del texto blanco */
+  cursor: pointer;
+  font-size: 18px; /* Aumento del tamaño del texto */
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos de los botones */
+button {
+  margin-top: 20px;
+  padding: 15px 30px; /* Aumento del padding */
+  background-color: #007bff;
+  color: #fff; /* Color del texto blanco */
+  border: none;
+  border-radius: 25px; /* Ajuste para hacer los botones más redondeados */
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 18px; /* Aumento del tamaño del texto */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Agrega estilos específicos para el formulario */
+.form-container {
+  margin-top: 40px; /* Espacio entre la imagen de perfil y el formulario */
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-left,
+.form-right {
+  width: 48%; /* El 10px es el espacio entre columnas */
+  display: block;
+}
+
+.form-left {
+  margin-left: 250px;
+}
+
+.form-row {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.form-row label {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.form-row input[type="text"],
+.form-row textarea,
+.form-row select,
+.form-row input[type="file"],
+.form-row input[type="submit"] {
+  flex: 1;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+textarea::placeholder {
+  color: #000; /* Color del texto del placeholder */
+}
+
+.form-row input[type="file"] {
+  overflow: hidden; /* Oculta el botón "Browse" en el input de tipo file */
+}
+
+.form-row input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 63px;
+}
+
+.form-row input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+

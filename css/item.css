@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    position: relative; /* Añadido para establecer un contexto de apilamiento */
+    color: white;
+    background-position: center top;
+    background-size: cover;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0), #fdc6fd88, #e2c6fd96, #001447e7, black); /* Fondo del body */
+    z-index: 1; /* Asegura que este pseudo-elemento esté sobre el fondo pero debajo del contenido */
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.container {
+    margin: 70px;
+    padding-top: 0;
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté sobre el pseudo-elemento */
+}
+
+.container h1 {
+    font-size: 50px;
+}
+
+.item {
+    margin-top: 70px;
+    position: relative;
+    width: 190px;
+    height: 115px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.item a {
+    text-decoration: none;
+}
+
+.item p {
+    text-align: left;
+    text-decoration: none;
+    color: white;
+    text-decoration-line: none;
+    margin-left: 20px;
+}
+
+.item img {
+    border-radius: 15px;
+    border: 6px solid #000A63;
+    background-color: white;
+    height: 115px;
+    margin: auto;
+}
+
+.recuadro {
+    transition: transform 0.3s ease;
+}
+
+.recuadro:hover {
+    transform: scale(1.1);
+}
+
+.carrusel {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-around;
+}
+
+.project-details {
+    margin-bottom: 70px;
+    margin-top: 30px;
+    margin-left: 30px;
+}

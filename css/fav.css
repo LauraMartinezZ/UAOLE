@@ -1,0 +1,237 @@
+body {
+    min-width: 300px;
+    color: #FFFFFF;
+    background: linear-gradient(#926096,#000642);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #000A63; 
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    
+  }
+  .navbar a {
+    float: left;
+    display: block;
+    color: #ffffff; 
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  .navbar a:hover {
+    background-color: #ddd; 
+    color: #000;
+  }
+  .navbar a.active {
+    background-color: #ddd; 
+    color: #000;
+  }
+  .navbar a.right {
+    float: right;
+  }
+
+
+
+
+
+main{
+    padding: 20px;
+}
+
+#datos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imagen>img{
+    width: 175px;
+    height: 175px;
+    border-radius: 175px;
+    border: 6px solid #FFFFFF;
+
+}
+
+#textos{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+#textos>h2{
+    font-size: 36px;
+    margin-top:  5px;
+    margin-bottom: 0;
+}
+
+#textos>p{
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+#imagen{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.favorito{
+    color: red;
+   
+    scale: 2.4;
+    width: 24px;
+    position: absolute;
+    margin-left: 150px;
+    margin-top: 150px;
+}
+
+#filtros{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.secciones{
+    background: linear-gradient(#19186A,#1B1A87);
+    border-radius: 20px;
+    width: 257px;
+    height: 175px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+
+    padding-top: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Añadir transición para suavizar el escalado */
+
+}
+
+.secciones>span{
+    scale: 2.2;
+
+}
+
+.secciones>h3{
+    margin-bottom: 10px;
+}
+
+.secciones:hover{
+    transform: scale(1.1); 
+}
+
+#todos{
+    margin-top: 0;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    margin-top: 10px;
+    position: relative;
+    width: 190px; /* Ancho de cada rectángulo */
+    height: 115px; /* Alto de cada rectángulo */
+    
+    display: flex;
+    flex-direction: column; /* Apilar elementos en columna */
+    justify-content: flex-end; /* Alinear al final (abajo) */
+    padding: 10px; /* Espaciado interno */
+    margin: 15px;
+  }
+
+  .item img {
+    border-radius: 15px; /* Borde redondeado */
+    border: 6px solid #000A63;
+    background-color: white; /* Color de fondo de los rectángulos */
+    width: 190px;
+    height: 115px;
+    margin: auto;
+  }
+
+  .item a{
+    text-decoration: none;
+  }
+  
+  /* Estilos para los títulos de los items */
+  .item h3 {
+    font-size: 16px;
+    color: #fff; /* Color del texto */
+    margin: 0; /* Resetear el margen */
+    text-align: center; /* Alinear a la derecha */
+    margin-top: auto; /* Mover el título al fondo */
+  }
+
+  .recuadro{
+    transition: transform 0.3s ease; /* Añadir transición para suavizar el escalado */
+  }
+  
+  .recuadro:hover {
+      transform: scale(1.1); /* Escalar la imagen al 110% de su tamaño original al pasar el ratón */
+  }
+
+  .estilo{
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    padding-top: 8px;
+    color: white;
+    background: #000A63;
+    text-align: center;
+    
+    border-radius: 40px;
+    margin-top: -45px;
+    margin-left: 160px;
+  }
+  
+  .estilo:hover{
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+
+
+
+
+@media (min-width: 550px) {
+
+    main{
+    margin-top: 40px;
+
+    }
+    #datos{
+        flex-direction: row;
+    }   
+
+    #imagen{
+        margin-left: 10%;
+    }
+
+    #textos{
+        margin-left: 5%;
+        text-align: left;
+    }
+
+    #todos{
+        justify-content: flex-start;
+    }
+}
+

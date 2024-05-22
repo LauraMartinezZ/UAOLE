@@ -1,0 +1,206 @@
+
+body {
+    min-width: 300px;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    position: relative; /* Añadido para establecer un contexto de apilamiento */
+    color: white;
+    height: 100%;
+
+  }
+  
+  main{
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px;
+  background: linear-gradient(rgba(229, 58, 186, 0.26), rgba(2, 2, 62, 0.4),rgba(2, 2, 62, 1),black); /* Fondo del body */
+  }
+
+.explore >h2{
+    font-size: 48px;
+    color: white;
+    text-align: center;
+}
+.fecha{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.fecha > div{
+    display: flex;
+    flex-direction: column ;
+}
+
+.desde{
+    margin-right: 20px;
+}
+
+.filter{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.theme{
+    margin-top: 10px;
+    
+}
+
+
+.titulo {
+    white-space: nowrap; /* Evitar el salto de línea */
+    overflow: hidden; /* Ocultar el texto que excede el contenedor */
+    text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) cuando el texto se recorte */
+    width: 200px; /* Ancho máximo del título */
+    height: 20px;
+}
+
+.titulo:hover {
+    white-space: normal; /* Restaurar el salto de línea al pasar el ratón */
+    overflow: visible; /* Mostrar el texto completo al pasar el ratón */
+}
+
+.item {
+    margin: 5px;
+    position: relative;
+    width: 190px; /* Ancho de cada rectángulo */
+    
+    display: flex;
+    flex-direction: column; /* Apilar elementos en columna */
+    justify-content: flex-end; /* Alinear al final (abajo) */
+    padding: 10px; /* Espaciado interno */
+  }
+
+  .item img {
+    border-radius: 15px; /* Borde redondeado */
+    border: 6px solid #000A63;
+    background-color: white; /* Color de fondo de los rectángulos */
+    width: 190px;
+    height: 115px;
+    margin: auto;
+  }
+
+.recuadro{
+  transition: transform 0.3s ease; /* Añadir transición para suavizar el escalado */
+}
+
+.recuadro:hover {
+    transform: scale(1.1); /* Escalar la imagen al 110% de su tamaño original al pasar el ratón */
+}
+
+
+  .item a{
+    text-decoration: none;
+  }
+  
+  /* Estilos para los títulos de los items */
+  .item h3 {
+
+    font-size: 16px;
+    color: #fff; /* Color del texto */
+    margin-top: 5px; /* Resetear el margen */
+    text-align: center; /* Alinear a la derecha */
+    margin-top: auto; /* Mover el título al fondo */
+  }
+
+
+  .slide-content {
+    position: relative; /* Establecer la posición absoluta para el contenido */
+    bottom: 20px; /* Colocar el contenido 20px desde la parte inferior */
+    top: 0px;
+    color: white; /* Color del texto */
+    width: 100%;
+    text-align: left;
+  }
+
+  .categoria-muestra{
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .titulo-muestra{
+    margin-top: 10px;
+    font-size: 30px;
+    margin-bottom: 0;
+  }
+
+  .fecha-muestra{
+    margin-top: 0;
+    font-size: 16px;
+  }
+
+  .creador-muestra{
+    font-size: 11px;
+  }
+
+  .objetos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .estilo{
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    padding-top: 8px;
+    color: white;
+    background: #000A63;
+    text-align: center;
+    
+    border-radius: 40px;
+    margin-top: -45px;
+    margin-left: 160px;
+  }
+  
+  .estilo:hover{
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+
+  @media (min-width: 700px){
+
+    .html,body{
+      height:100vh;
+  }
+  main{
+    height: 100%;
+  }
+
+    .objetos{
+        max-width: 90%;
+        margin: auto;
+    }
+
+    .explore{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .explore > h2{
+        margin-right: 40px;
+    }
+
+    .filter{
+        width: 400px;
+        margin: 0;
+    }
+
+    .fecha{
+        justify-content: start;
+    }
+
+    #theme{
+        width: 400px;
+    }
+
+    
+  }

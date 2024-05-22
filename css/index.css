@@ -1,0 +1,454 @@
+
+body {
+  min-width: 300px;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  position: relative; /* Añadido para establecer un contexto de apilamiento */
+}
+
+main{
+  font-family: 'Montserrat', sans-serif;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(229, 58, 186, 0.26), rgba(2, 2, 62, 0.4),rgba(2, 2, 62, 1),black); /* Fondo del body */
+  z-index: 2; /* Asegura que este pseudo-elemento esté sobre el .overlay */
+}
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../resources/img1.png'); 
+  background-position: center top;
+  background-size: cover;
+  z-index: 0;
+}
+
+
+
+
+.titulo {
+    white-space: nowrap; /* Evitar el salto de línea */
+    overflow: hidden; /* Ocultar el texto que excede el contenedor */
+    text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) cuando el texto se recorte */
+    width: 200px; /* Ancho máximo del título */
+    height: 20px;
+}
+
+.titulo:hover {
+    white-space: normal; /* Restaurar el salto de línea al pasar el ratón */
+    overflow: visible; /* Mostrar el texto completo al pasar el ratón */
+}
+
+/* Resto de tus estilos */
+
+
+main {
+  position: relative;
+  padding-left: 90px;
+  padding-right: 90px;
+  margin-top: 15px;
+  z-index: 2;
+}
+
+  
+
+
+  .content {
+    padding: 20px;
+    padding-top: 0;
+  }
+  
+  
+
+  .category>h2{
+    color: white;
+  }
+
+  
+  
+  .item {
+    margin: 5px;
+    position: relative;
+    width: 190px; /* Ancho de cada rectángulo */
+    
+    display: flex;
+    flex-direction: column; /* Apilar elementos en columna */
+    justify-content: flex-end; /* Alinear al final (abajo) */
+    padding: 10px; /* Espaciado interno */
+  }
+
+  .item img {
+    border-radius: 15px; /* Borde redondeado */
+    border: 6px solid #000A63;
+    background-color: white; /* Color de fondo de los rectángulos */
+    width: 190px;
+    height: 115px;
+    margin: auto;
+  }
+
+.recuadro{
+  transition: transform 0.3s ease; /* Añadir transición para suavizar el escalado */
+}
+
+.recuadro:hover {
+    transform: scale(1.1); /* Escalar la imagen al 110% de su tamaño original al pasar el ratón */
+}
+
+
+  .item a{
+    text-decoration: none;
+  }
+  
+  /* Estilos para los títulos de los items */
+  .item h3 {
+
+    font-size: 16px;
+    color: #fff; /* Color del texto */
+    margin-top: 5px; /* Resetear el margen */
+    text-align: center; /* Alinear a la derecha */
+    margin-top: auto; /* Mover el título al fondo */
+  }
+
+  
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .carrusel{
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-around;
+  }
+  
+
+.hero-carousel {
+    text-align: center; /* Centrar el contenido del carrusel horizontalmente */
+    width: 100%;
+    height: 250px;
+  }
+  
+  .hero-slide {
+   
+    position: relative; /* Establecer la posición relativa para los slides */
+    display: inline-block; /* Mostrar los elementos del carrusel en línea */
+
+    height: 250px;
+    width: 100%;
+  }
+
+  .hero-slide img{
+    width: 0;
+    height: 250px;
+  }
+  
+ 
+  
+  /* Estilos para el contenido de los slides */
+  .slide-content {
+    position: relative; /* Establecer la posición absoluta para el contenido */
+    bottom: 20px; /* Colocar el contenido 20px desde la parte inferior */
+    top: 0px;
+    color: white; /* Color del texto */
+    width: 100%;
+    text-align: left;
+  }
+
+  .categoria-muestra{
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .titulo-muestra{
+    margin-top: 10px;
+    font-size: 30px;
+    margin-bottom: 0;
+  }
+
+  .fecha-muestra{
+    margin-top: 0;
+    font-size: 16px;
+  }
+
+  .creador-muestra{
+    font-size: 11px;
+  }
+
+  .play {
+    border-radius: 30px;
+    text-align: center;
+    width: 90px;
+    height: 22px;
+    padding: 5px;
+    font-size: 18px;
+    margin: 0;
+    background: linear-gradient(to right, #3876EE, #0A114E);
+    cursor: pointer;
+    text-transform: uppercase;
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.5s ease; /* Añadir transición para suavizar el cambio de color */
+    
+  }
+  
+  .play:hover {
+    background:pink;
+    transform: scale(1.2);
+    
+    color: #3876EE;
+  }
+  
+  
+
+  .likes{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Añadir transición para suavizar el escalado */
+
+  }
+
+  .likes:hover{
+    color: red;
+    transform: scale(1.2); /* Escalar la imagen al 110% de su tamaño original al pasar el ratón */
+    
+  }
+
+  
+
+  .likes p{
+    margin-top: 0;
+    font-size: 12px;
+  }
+
+  .interacciones{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .acciones{
+    display: flex;
+    flex-direction: row;
+    margin-right: 50px;
+    width: 90px;
+    justify-content: space-around;
+  }
+
+  .marcado{
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Añadir transición para suavizar el escalado */
+  }
+  .marcado:hover{
+    color: red;
+    fill: red;
+    transform: scale(1.2); /* Escalar la imagen al 110% de su tamaño original al pasar el ratón */
+
+  }
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.material-symbols-outlined:hover {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.objetos{
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.siguiente{
+  cursor: pointer;
+  color: white;
+  font-size: 40px;
+  height: 50px;
+  width: 50px;
+  margin-top:30px;
+  transition: transform 0.3s ease; /* Añadir transición para suavizar el escalado */
+}
+
+.siguiente:hover{
+  transform: scale(1.2); /* Escalar la imagen al 110% de su tamaño original al pasar el ratón */
+
+}
+
+.volver{
+  transform: scale(-1);
+  display: none;
+}
+
+.volver:hover{
+
+  transform: scale(-1.2);
+}
+
+.estilo{
+  position: absolute;
+  width: 40px;
+  height: 30px;
+  padding-top: 8px;
+  color: white;
+  background: #000A63;
+  text-align: center;
+  
+  border-radius: 40px;
+  margin-top: -45px;
+  margin-left: 160px;
+}
+
+.estilo:hover{
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+
+
+.mySlides {display:none}
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:15px;width:15px;padding:0}
+
+
+.carrousel{
+
+  position: relative;
+
+  max-width:80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.w3-text-white, .w3-hover-text-white:hover {
+  color: #fff !important;
+}
+.w3-section, .w3-code {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
+
+.botones{
+  margin: auto;
+}
+
+.w3-large {
+  font-size: 18px !important;
+}
+
+
+.w3-display-bottommiddle {
+  
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  justify-content: space-around;
+  
+}
+
+.w3-left, .w3-right, .w3-badge {
+  cursor: pointer;
+}
+.w3-left {
+  float: left !important;
+}
+
+.w3-right {
+  float: right !important;
+}
+
+
+.w3-border {
+  border: 1px solid #ccc !important;
+}
+.w3-badge {
+  border-radius: 50%;
+}
+.w3-badge, .w3-tag {
+  background-color: #000;
+  color: #fff;
+  display: inline-block;
+  padding-left: 8px;
+  padding-right: 8px;
+  text-align: center;
+}
+
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section {
+  display: block;
+}
+
+.w3-transparent {
+  background-color: transparent ;
+}
+
+.w3-transparent:hover{
+  background: #fff;
+}
+
+.liked{
+  color: red;
+
+}
+
+.liked span{
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+w3-white{
+  background-color: white !important;
+}
+
+@media (max-width: 700px)
+{
+  main{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .carrousel h2{
+    font-size: 20px;
+  }
+
+  .carrousel h3{
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to bottom, #fdc6fd, #000743);
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.user {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+}
+
+.user img {
+  width: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.user h3 {
+  font-size: 36px;
+}
+
+.perfil {
+  margin-top: 100px;
+  margin-left: 150px;
+}
+
+.detalles {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+  justify-items: center;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 200px;
+}
+
+.item img {
+  border-radius: 15px;
+  border: 6px solid #000A63;
+  background-color: white;
+  width: 190px;
+  height: 115px;
+
+  margin-bottom: 10px;
+}
+
+.recuadro {
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.recuadro:hover {
+  transform: scale(1.1);
+}
+
+.item h3 {
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+}
+
+.material-symbols-outlined:hover {
+  font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+}
+
+.estilo {
+  position: absolute;
+  width: 40px;
+  height: 30px;
+  padding-top: 8px;
+  color: white;
+  background: #000A63;
+  text-align: center;
+  border-radius: 40px;
+  top: -20px;
+  right: 10px;
+}

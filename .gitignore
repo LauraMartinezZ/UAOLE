@@ -1,0 +1,10 @@
+credentials.php
+
+#   Teneis que crear un archivo que se llame credentials.php para vuestra info de la base de datos:
+#   
+#   <?php
+#   
+#       $servidor = "localhost";
+#       $usuario_bd = "admin"; // Reemplaza con el usuario de tu base de datos
+#       $contraseña_bd = "Car123*MA"; // Reemplaza con la contraseña de tu base de datos
+#       $nombre_bd = "ua"; // Nombre de tu base de datos

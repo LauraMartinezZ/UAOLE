@@ -1,0 +1,140 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, #fdc6fd, #000743);
+    color: #fff; 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.user h3 {
+    font-size: 36px; 
+    margin-bottom: 50px;
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.detalles {
+    max-width: 600px; 
+}
+
+.user {
+    margin-top: 30px;
+}
+
+.items {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-left: 50px; /* Ajuste del margen izquierdo */
+    margin-top: 20px; /* Ajuste del margen superior */
+}
+
+.item {
+    margin: 10px;
+    position: relative;
+    width: 190px; 
+    height: 115px; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end; 
+    padding: 10px; 
+}
+
+.item img {
+    border-radius: 15px; 
+    border: 6px solid #000A63;
+    background-color: white; 
+    width: 190px;
+    height: 115px;
+    margin: auto;
+}
+
+.recuadro {
+    transition: transform 0.3s ease; 
+}
+
+.recuadro:hover {
+    transform: scale(1.1);
+}
+
+.item a {
+    text-decoration: none;
+}
+
+.item h3 {
+    font-size: 16px;
+    color: #fff; 
+    margin: 0; 
+    text-align: center; 
+    margin-top: auto; 
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.material-symbols-outlined:hover {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.estilo {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    padding-top: 8px;
+    color: white;
+    background: #000A63;
+    text-align: center;
+    border-radius: 40px;
+    margin-top: -45px;
+    margin-left: 160px;
+}
+
+/* Estilos para la barra de búsqueda */
+.barrita {
+    margin-bottom: 20px; /* Ajuste del margen inferior */
+    text-align: center; /* Alinear al centro */
+    position: relative; /* Ajuste de posición */
+    margin-top: 50PX;
+
+}
+
+.barrita input[type="text"] {
+    border-radius: 20px; 
+    padding: 10px; 
+    border: none; 
+    outline: none; 
+    width: 300px; 
+    font-size: 16px;
+}
+
+.barrita button {
+    border-radius: 20px; 
+    padding: 10px 20px; 
+    border: none; 
+    outline: none; 
+    background-color: #000A63; 
+    color: white; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s; 
+}
+
+.barrita button:hover {
+    background-color: #1E1E96; 
+}
