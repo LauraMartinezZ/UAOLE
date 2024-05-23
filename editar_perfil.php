@@ -39,10 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["mail"] = $nuevoEmail;
 
        
-        header("Location: perfil.php?mensaje=actualizacion_exitosa");
+        header("Location: cuenta.php");
     } else {
         
-        header("Location: perfil.php?mensaje=error_actualizacion");
+        header("Location: cuenta.php");
     }
 
 

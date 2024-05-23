@@ -74,6 +74,7 @@ $conexion->close();
         <br>
         <p>Fecha: <?php echo htmlspecialchars($proyecto['fecha']); ?></p>
         <p>Autor: <?php echo htmlspecialchars($proyecto['autor_nombre']); ?></p>
+        <a href="darLike.php?id=<?=$id_proyecto;?>">like</a>
     </div>
     <h2>Archivos enlazados</h2>
     <div class="carrusel">

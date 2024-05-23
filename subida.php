@@ -113,6 +113,9 @@ if(isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
 } else {
     echo "Error al subir la imagen del proyecto.";
 }
+header('Location: item.php?id='.$id_proyecto.'');
+
+
 
 // Cerrar la conexión
 $conexion->close();
