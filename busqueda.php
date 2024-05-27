@@ -1,86 +1,49 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION["id_usu"])) {
     header("Location: login.php");
     exit();
 }
 
-
 include 'credentials.php';
 
-
 $conexion = new mysqli($servidor, $usuario_bd, $contraseña_bd, $nombre_bd);
-
 
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
 
-
 $busqueda = "";
 
-// Verificar si se ha enviado un término de búsqueda
+function truncateString($string, $length = 10) {
+    if (strlen($string) > $length) {
+        return substr($string, 0, $length) . '...';
+    }
+    return $string;
+}
+
 if (isset($_POST['busqueda'])) {
-    $busqueda = $_POST['busqueda'];
+    $busqueda = $conexion->real_escape_string($_POST['busqueda']);
 
+    $sql = "SELECT proyectos.*, usuarios.nombre AS autor_nombre, titulacion.nombre AS titulacion_nombre
+            FROM proyectos 
+            LEFT JOIN usuarios ON proyectos.autor = usuarios.id_usu
+            LEFT JOIN titulacion ON proyectos.titulacion = titulacion.id_titulacion
+            WHERE proyectos.titulo LIKE '%$busqueda%'
+               OR usuarios.nombre LIKE '%$busqueda%'
+               OR titulacion.nombre LIKE '%$busqueda%'";
 
-    $sql_titulacion = "SELECT id_titulacion FROM titulacion WHERE nombre LIKE '%$busqueda%'";
-    $resultado_titulacion = $conexion->query($sql_titulacion);
+    $result = $conexion->query($sql);
 
- 
-    $sql_autor = "SELECT id_usu FROM usuarios WHERE nombre LIKE '%$busqueda%'";
-    $resultado_autor = $conexion->query($sql_autor);
-
-    // Verificar si se encontró la titulación o el autor
-    if ($resultado_titulacion->num_rows > 0 || $resultado_autor->num_rows > 0) {
-        $titulacion_id = null;
-        $autor_id = null;
-
-        
-        if ($resultado_titulacion->num_rows > 0) {
-            $fila_titulacion = $resultado_titulacion->fetch_assoc();
-            $titulacion_id = $fila_titulacion['id_titulacion'];
-        }
-
-      
-        if ($resultado_autor->num_rows > 0) {
-            $fila_autor = $resultado_autor->fetch_assoc();
-            $autor_id = $fila_autor['id_usu'];
-        }
-
-     
-        $sql = "SELECT * FROM proyectos WHERE titulo LIKE '%$busqueda%'";
-        if ($titulacion_id) {
-            $sql .= " OR titulacion = $titulacion_id";
-        }
-        if ($autor_id) {
-            $sql .= " OR autor = $autor_id";
-        }
-
-        $result = $conexion->query($sql);
-
-   
-        if ($result === false) {
-            die("Error en la consulta: " . $conexion->error);
-        }
-    } else {
-   
-        $sql = "SELECT * FROM proyectos WHERE titulo LIKE '%$busqueda%'";
-        $result = $conexion->query($sql);
-
- 
-        if ($result === false) {
-            die("Error en la consulta: " . $conexion->error);
-        }
+    if ($result === false) {
+        die("Error en la consulta: " . $conexion->error);
     }
 }
 
 $usuarioId = $_SESSION["id_usu"];
 $sql_proyectos = "SELECT id_proyecto, titulo, portada FROM proyectos WHERE autor = ?";
 $stmt = $conexion->prepare($sql_proyectos);
-
 
 if ($stmt === false) {
     die("Error en la preparación de la consulta: " . $conexion->error);
@@ -93,7 +56,7 @@ $resultado_proyectos = $stmt->get_result();
 $proyectos = [];
 if ($resultado_proyectos->num_rows > 0) {
     while ($fila = $resultado_proyectos->fetch_assoc()) {
-        $portada = $fila['portada']; 
+        $portada = $fila['portada'];
         $portadaURL = 'data:image/jpeg;base64,' . base64_encode($portada);
         $fila['portada'] = $portadaURL;
         $proyectos[] = $fila;
@@ -101,7 +64,6 @@ if ($resultado_proyectos->num_rows > 0) {
 }
 
 $stmt->close();
-
 $conexion->close();
 ?>
 
@@ -121,7 +83,7 @@ $conexion->close();
         <div class="perfil">
             <form action="" method="post">
                 <div class="barrita">
-                    <input type="text" name="busqueda" placeholder="Filtra por título, facultad, autor.." value="<?php echo $busqueda; ?>">
+                    <input type="text" name="busqueda" placeholder="Filtra por título, facultad, autor.." value="<?php echo htmlspecialchars($busqueda); ?>">
                     <button type="submit">Buscar</button>
                 </div>
                 <div class="user">
@@ -134,8 +96,8 @@ $conexion->close();
                         <?php while($row = $result->fetch_assoc()) : ?>
                             <div class="item">
                                 <a class="recuadro" href="item.php?id=<?php echo htmlspecialchars($row['id_proyecto']); ?>">
-                                    <img src="<?php echo htmlspecialchars($row['portada']); ?>" alt="Portada del proyecto">
-                                    <h3><?php echo htmlspecialchars($row['titulo']); ?></h3>
+                                    <img src="mostrar_imagen.php?id=<?php echo htmlspecialchars($row['id_proyecto']); ?>" alt="Portada del proyecto" title="<?php echo htmlspecialchars($row['titulo']); ?>">
+                                    <h3><?php echo htmlspecialchars(truncateString($row['titulo'])); ?></h3>
                                 </a>
                             </div>
                         <?php endwhile; ?>
@@ -145,8 +107,6 @@ $conexion->close();
                 </div>              
             </div>
         </div>
-
     </div>
-
 </body>
 </html>

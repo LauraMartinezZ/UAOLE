@@ -1,30 +1,24 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION["id_usu"])) {
     header("Location: login.php");
     exit();
 }
 
-
 include 'credentials.php';
 
-
 $conexion = new mysqli($servidor, $usuario_bd, $contraseña_bd, $nombre_bd);
-
 
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
 
-
 $usuarioId = $_SESSION["id_usu"];
 $sql = "SELECT id_proyecto, titulo, portada FROM proyectos
         INNER JOIN favoritos ON proyectos.id_proyecto = favoritos.proyectoid
- WHERE favoritos.usuid = ?";
+        WHERE favoritos.usuid = ?";
 $stmt = $conexion->prepare($sql);
-
 
 if ($stmt === false) {
     die("Error en la preparación de la consulta: " . $conexion->error);
@@ -42,9 +36,7 @@ if ($resultado->num_rows > 0) {
         $fila['portada'] = $portadaURL;
         $proyectos[] = $fila;
     }
-    
 }
-
 
 $stmt->close();
 $conexion->close();
@@ -73,16 +65,14 @@ $conexion->close();
                     <?php foreach ($proyectos as $proyecto) : ?>
                         <div class="item">
                             <a class="recuadro" href="item.php?id=<?php echo htmlspecialchars($proyecto['id_proyecto']); ?>">
-                                <img src="<?php echo htmlspecialchars($proyecto['portada']); ?>" alt="Portada del proyecto">
+                                <img src="<?php echo htmlspecialchars($proyecto['portada']); ?>" alt="Portada del proyecto" title="<?php echo htmlspecialchars($proyecto['titulo']); ?>">
                                 <h3><?php echo htmlspecialchars($proyecto['titulo']); ?></h3>
                             </a>
                         </div>
                     <?php endforeach; ?>
-                   
                 </div>              
             </div>
         </div>
     </div>
 </body>
 </html>
-
