@@ -119,4 +119,4 @@ header('Location: item.php?id='.$id_proyecto.'');
 
 // Cerrar la conexión
 $conexion->close();
-?>
+

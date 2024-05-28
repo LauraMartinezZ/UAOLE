@@ -52,4 +52,4 @@ function mostrarImagenDeReemplazo() {
 
 // Cierra la conexión
 $conn->close();
-?>
+

@@ -51,4 +51,4 @@ if (isset($_GET['id_proyecto'])) {
 
 // Cerrar la conexión a la base de datos
 $conn->close();
-?>
+
