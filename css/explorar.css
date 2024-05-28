@@ -5,6 +5,7 @@ body {
   background: linear-gradient(to bottom, #fdc6fd, #000743);
   color: #fff;
   min-height: 100vh; /* Asegura que el fondo se extienda hasta el final de la página */
+  font-size: 25px;
 }
 
 .explore > h2 {

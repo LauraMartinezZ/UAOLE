@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
     while ($contador < 10 && $row = $result->fetch_assoc()) {
         echo '
         <div class="item">
-          <a class="recuadro" href="item.php">
+          <a class="recuadro" href="item.php?id='.$row['id_proyecto'].'">
               <img src="mostrar_imagen.php?id='.$row['id_proyecto'].'" alt="Portada ' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '" title="' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '">
           </a>
             <h3 class="titulo">' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '</h3>

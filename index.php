@@ -70,14 +70,13 @@ if ($conn->connect_error) {
               <p class="creador-muestra">' . htmlspecialchars($row['autor_nombre'], ENT_QUOTES, 'UTF-8') . '</p>
               <div class="interacciones">
                 <div class="acciones">
-                  <span class="material-symbols-outlined marcado">notifications_active</span>
-                  <span class="material-symbols-outlined marcado">bookmark</span>
+                  
                   <div id="like-'.$row['id_proyecto'].'" onclick="darLike('.$row['id_proyecto'].')" class="likes ' . $liked . '">
                     <span class="material-symbols-outlined">favorite</span>
                     <p id="likes-count-'.$row['id_proyecto'].'" class"likes-count">'. htmlspecialchars($row['likes'], ENT_QUOTES, 'UTF-8') .'</p>
                   </div>
                 </div>
-                <h3 class="play">PLAY</h3>
+                <a class="play" href="item.php?id='.$row['id_proyecto'].'" >PLAY</a>
               </div>
             </div>';
             $contador++;
@@ -112,7 +111,7 @@ if ($conn->connect_error) {
             while ($contador < 5 && $row = $result->fetch_assoc()) {
                 echo '
                 <div class="item">
-                  <a class="recuadro" href="item.php">
+                  <a class="recuadro" href="item.php?id='.$row['id_proyecto'].'">
                       <img src="mostrar_imagen.php?id='.$row['id_proyecto'].'" alt="Portada ' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '" title="' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '">
                   </a>
                     <h3 class="titulo">' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '</h3>
@@ -143,7 +142,7 @@ if ($conn->connect_error) {
         while ($contador < 5 && $row = $result->fetch_assoc()) {
             echo '
             <div class="item">
-              <a class="recuadro" href="item.php">
+              <a class="recuadro" href="item.php?id='.$row['id_proyecto'].'">
                   <img src="mostrar_imagen.php?id='.$row['id_proyecto'].'" alt="Portada ' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '" title="' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '">
               </a>
                 <h3 class="titulo">' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '</h3>
@@ -173,7 +172,7 @@ if ($conn->connect_error) {
         while ($row = $result->fetch_assoc()) {
             echo '
             <div class="item">
-              <a class="recuadro" href="item.php">
+              <a class="recuadro" href="item.php?id='.$row['id_proyecto'].'">
                   <img src="mostrar_imagen.php?id='.$row['id_proyecto'].'" alt="Portada ' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '" title="' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '">
               </a>
                 <h3 class="titulo">' . htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8') . '</h3>

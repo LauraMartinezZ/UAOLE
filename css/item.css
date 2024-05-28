@@ -5,6 +5,7 @@ body {
     color: white;
     background-position: center top;
     background-size: cover;
+    font-size: 25px;
 }
 
 body::before {
@@ -89,3 +90,58 @@ body::before {
     margin-top: 30px;
     margin-left: 30px;
 }
+
+
+.likes{
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    width: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Añadir transición para suavizar el escalado */
+
+  }
+
+  .likes:hover{
+    color: red;
+    transform: scale(1.2); /* Escalar la imagen al 110% de su tamaño original al pasar el ratón */
+    
+  }
+
+  
+
+  .likes p{
+    margin-top: 0;
+    font-size: 24px;
+    margin-left: 5px;
+  }
+
+  .liked{
+    color: red;
+  
+  }
+  
+  .liked span{
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+
+
+  .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+  
+  .material-symbols-outlined:hover {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }

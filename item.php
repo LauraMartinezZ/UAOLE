@@ -17,7 +17,16 @@ if ($conexion->connect_error) {
 $id_proyecto = isset($_GET['id']) ? intval($_GET['id']) : 23;
 
 // Consultar los detalles del proyecto y el nombre del usuario
-$sql_proyecto = "SELECT p.titulo, p.descripcion, p.fecha, p.autor, p.portada, t.nombre AS titulacion, u.nombre AS autor_nombre
+$sql_proyecto = "SELECT p.titulo, 
+                        p.descripcion, 
+                        p.fecha, 
+                        p.autor, 
+                        p.portada, 
+                        t.nombre AS titulacion, 
+                        u.nombre AS autor_nombre, 
+                        (SELECT COUNT(*) 
+                         FROM favoritos 
+                         WHERE favoritos.proyectoid = p.id_proyecto) AS likes
                  FROM proyectos p
                  JOIN titulacion t ON p.titulacion = t.id_titulacion
                  JOIN usuarios u ON p.autor = u.id_usu
@@ -42,6 +51,17 @@ while ($row = $result_ficheros->fetch_assoc()) {
     $archivos[] = $row;
 }
 
+if(isset($_SESSION['id_usu'])) {
+    $sql1 = "SELECT 1 FROM favoritos WHERE usuid = '{$_SESSION['id_usu']}' AND proyectoid = '{$id_proyecto}' LIMIT 1";
+    $result1 = $conexion->query($sql1);
+    if ($result1 === false) {
+        die("Error en la consulta: " . $conexion->error);
+    }
+    $liked = $result1->num_rows > 0 ? "liked" : "";
+  } else {
+    $liked = "";
+  }
+
 // Cerrar las declaraciones y la conexión
 $stmt_proyecto->close();
 $stmt_ficheros->close();
@@ -56,6 +76,8 @@ $conexion->close();
     <title>Detalles del contenido</title>
     <link rel="stylesheet" href="css/item.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <style>
         body {
             background-image: url('data:image/jpeg;base64,<?php echo base64_encode($proyecto['portada']); ?>');
@@ -74,7 +96,14 @@ $conexion->close();
         <br>
         <p>Fecha: <?php echo htmlspecialchars($proyecto['fecha']); ?></p>
         <p>Autor: <?php echo htmlspecialchars($proyecto['autor_nombre']); ?></p>
-        <a href="darLike.php?id=<?=$id_proyecto;?>">like</a>
+        <?php
+        echo '
+        <div id="like-'.$id_proyecto.'" onclick="darLike('.$id_proyecto.')" class="likes ' . $liked . '">
+            <span class="material-symbols-outlined">favorite</span>
+            <p id="likes-count-'.$id_proyecto.'" class"likes-count">'. htmlspecialchars($proyecto['likes'], ENT_QUOTES, 'UTF-8') .'</p>
+        </div>';
+
+        ?>
     </div>
     <h2>Archivos enlazados</h2>
     <div class="carrusel">
@@ -88,6 +117,9 @@ $conexion->close();
         <?php endforeach; ?>
     </div>
 </div>
+
+<script src="js/index.js"></script>
+
 </body>
 </html>
 
