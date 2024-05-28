@@ -106,6 +106,8 @@ $conexion->close();
         ?>
     </div>
     <h2>Archivos enlazados</h2>
+    <br>
+    <br>
     <div class="carrusel">
         <?php foreach ($archivos as $archivo): ?>
             <div class="item">
@@ -116,6 +118,16 @@ $conexion->close();
             </div>
         <?php endforeach; ?>
     </div>
+
+    <?php 
+        if ($_SESSION['id_usu'] == $proyecto['autor']) {
+            echo '
+            <form method="POST" action="eliminar.php" onsubmit="return confirm(\'¿Estás seguro de que deseas eliminar este proyecto?\');">
+                <input type="hidden" name="id_proyecto" value="' . htmlspecialchars($id_proyecto) . '">
+                <button type="submit" class="btn-delete">Eliminar Proyecto</button>
+            </form>';
+        }
+    ?>
 </div>
 
 <script src="js/index.js"></script>
