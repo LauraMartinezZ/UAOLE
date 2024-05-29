@@ -61,24 +61,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="email" name="email" placeholder="Enter your email" required>
     <input type="password" name="password" placeholder="Enter your password" required>
     <input type="password" name="confirm_password" placeholder="Repeat your password" required>
+    <div class="select-container">
     <select name="titulacion" required>
-      <option value="">Select your degree</option>
-      <?php
-      include('credentials.php');
-      $conexion = new mysqli($servidor, $usuario_bd, $contraseña_bd, $nombre_bd);
-      if ($conexion->connect_error) {
-          die("Conexión fallida: " . $conexion->connect_error);
-      }
-      $sql = "SELECT id_titulacion, nombre FROM titulacion";
-      $resultado = $conexion->query($sql);
-      if ($resultado->num_rows > 0) {
-          while($fila = $resultado->fetch_assoc()) {
-              echo "<option value='" . $fila["id_titulacion"] . "'>" . $fila["nombre"] . "</option>";
-          }
-      }
-      $conexion->close();
-      ?>
+        <option value="">Selecciona tu titulación</option>
+        <?php
+        include('credentials.php');
+        $conexion = new mysqli($servidor, $usuario_bd, $contraseña_bd, $nombre_bd);
+        if ($conexion->connect_error) {
+            die("Conexión fallida: " . $conexion->connect_error);
+        }
+        $sql = "SELECT id_titulacion, nombre FROM titulacion";
+        $resultado = $conexion->query($sql);
+        if ($resultado->num_rows > 0) {
+            while($fila = $resultado->fetch_assoc()) {
+                echo "<option value='" . $fila["id_titulacion"] . "'>" . $fila["nombre"] . "</option>";
+            }
+        }
+        $conexion->close();
+        ?>
     </select>
+</div>
     <button type="reset"> Borrar</button>
     <button type="submit">Registrarse</button>
     <p>¿Ya eres usuario? <a href="login.php">Inicia sesión aquí</a></p>

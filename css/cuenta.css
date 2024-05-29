@@ -1,70 +1,97 @@
 body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(to bottom, #fdc6fd, #000743);
-    color: #fff; 
-  }
-  
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to bottom, #fdc6fd, #000743);
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px; /* Añadir padding para mejorar la presentación en pantallas pequeñas */
+}
+
+.perfil {
+  text-align: center;
+  margin-bottom: 20px; /* Espacio inferior en pantallas pequeñas */
+}
+
+.perfil img {
+  width: 150px; /* Reducir el tamaño de la imagen en pantallas pequeñas */
+  border-radius: 50%;
+  margin-bottom: 20px; /* Reducir el margen inferior */
+}
+
+.nombre-cuenta {
+  font-size: 28px; 
+  margin-bottom: 10px; 
+}
+
+.detalles {
+  max-width: 600px;
+  text-align: center; /* Centrar el texto en pantallas pequeñas */
+}
+
+.detalles h1 {
+  font-size: 28px; /* Reducir el tamaño del título en pantallas pequeñas */
+}
+
+.detalles p {
+  font-size: 18px; /* Reducir el tamaño del texto en pantallas pequeñas */
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px 30px; 
+  background-color: #d198d1;
+  color: #fff; 
+  border: none;
+  border-radius: 25px; 
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 18px; /* Reducir el tamaño del texto en pantallas pequeñas */
+}
+
+button:hover {
+  background-color: #c76fc7;
+}
+
+button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Media queries para pantallas pequeñas */
+@media (min-width: 769px) {
   .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: row; /* Cambiar a fila en pantallas grandes */
   }
-  
 
   .perfil {
     text-align: center;
-    margin-right: 50px; 
+    margin-right: 50px; /* Añadir margen derecho en pantallas grandes */
   }
-  
-  .perfil img {
-    width: 200px; 
-    border-radius: 50%;
-    margin-bottom: 40px; 
-  }
-  
-  
 
-  .nombre-cuenta {
-    font-size: 28px; 
-    margin-bottom: 10px; 
+  .perfil img {
+    width: 200px; /* Tamaño de imagen en pantallas grandes */
+    margin-bottom: 40px; /* Margen inferior en pantallas grandes */
   }
-  
- 
-  .detalles {
-    max-width: 600px; 
+
+  .detalles h1 {
+    font-size: 36px; /* Tamaño del título en pantallas grandes */
   }
-  
-  .detalles h3 {
-    font-size: 36px; 
-    margin-bottom: 20px;
-  }
-  
+
   .detalles p {
-    font-size: 24px; 
-    margin-bottom: 10px;
+    font-size: 24px; /* Tamaño del texto en pantallas grandes */
   }
-  
- 
+
   button {
-    margin-top: 20px;
-    padding: 15px 30px; 
-    background-color: #d198d1;
-    color: #fff; 
-    border: none;
-    border-radius: 25px; 
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 24px; 
+    font-size: 24px; /* Tamaño del texto en los botones en pantallas grandes */
   }
-  
-  button:hover {
-    background-color: #c76fc7;
-  }
-  
-  button a {
-    color: #fff;
-    text-decoration: none;
-  }
+}
+
   

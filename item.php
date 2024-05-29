@@ -58,9 +58,9 @@ if(isset($_SESSION['id_usu'])) {
         die("Error en la consulta: " . $conexion->error);
     }
     $liked = $result1->num_rows > 0 ? "liked" : "";
-  } else {
+} else {
     $liked = "";
-  }
+}
 
 // Cerrar las declaraciones y la conexión
 $stmt_proyecto->close();
@@ -97,30 +97,36 @@ $conexion->close();
         <p>Fecha: <?php echo htmlspecialchars($proyecto['fecha']); ?></p>
         <p>Autor: <?php echo htmlspecialchars($proyecto['autor_nombre']); ?></p>
         <?php
-        echo '
-        <div id="like-'.$id_proyecto.'" onclick="darLike('.$id_proyecto.')" class="likes ' . $liked . '">
-            <span class="material-symbols-outlined">favorite</span>
-            <p id="likes-count-'.$id_proyecto.'" class"likes-count">'. htmlspecialchars($proyecto['likes'], ENT_QUOTES, 'UTF-8') .'</p>
-        </div>';
-
+        if(isset($_SESSION['id_usu'])) {
+            echo '
+            <div id="like-'.$id_proyecto.'" onclick="darLike('.$id_proyecto.')" class="likes ' . $liked . '">
+                <span class="material-symbols-outlined">favorite</span>
+                <p id="likes-count-'.$id_proyecto.'" class"likes-count">'. htmlspecialchars($proyecto['likes'], ENT_QUOTES, 'UTF-8') .'</p>
+            </div>';
+        }
         ?>
     </div>
     <h2>Archivos enlazados</h2>
     <br>
     <br>
+    <?php if(!isset($_SESSION['id_usu'])): ?>
+        <p class="login-message">Por favor <a href="login.php">inicia sesión</a> para descargar archivos.</p>
+    <?php endif; ?>
     <div class="carrusel">
         <?php foreach ($archivos as $archivo): ?>
             <div class="item">
-                <a class="recuadro" href="download.php?file=<?php echo urlencode($archivo['nombre']); ?>&id=<?php echo $id_proyecto; ?>">
-                    <img src="./resources/download.png" alt="Descarga">
-                    <p><?php echo htmlspecialchars($archivo['nombre']); ?></p>
-                </a>
+                <?php if(isset($_SESSION['id_usu'])): ?>
+                    <a class="recuadro" href="download.php?file=<?php echo urlencode($archivo['nombre']); ?>&id=<?php echo $id_proyecto; ?>">
+                        <img src="./resources/download.png" alt="Descarga">
+                        <p><?php echo htmlspecialchars($archivo['nombre']); ?></p>
+                    </a>
+                <?php endif; ?>
             </div>
         <?php endforeach; ?>
     </div>
 
     <?php 
-        if ($_SESSION['id_usu'] == $proyecto['autor']) {
+        if (isset($_SESSION['id_usu']) && $_SESSION['id_usu'] == $proyecto['autor']) {
             echo '
             <form method="POST" action="eliminar.php" onsubmit="return confirm(\'¿Estás seguro de que deseas eliminar este proyecto?\');">
                 <input type="hidden" name="id_proyecto" value="' . htmlspecialchars($id_proyecto) . '">
@@ -134,4 +140,6 @@ $conexion->close();
 
 </body>
 </html>
+
+
 

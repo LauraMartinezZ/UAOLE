@@ -31,12 +31,12 @@ body {
 }
 
 .items {
+    
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap; /* Cambiado a wrap para que los elementos se ajusten en filas */
     justify-content: center;
     margin-left: 50px; /* Ajuste del margen izquierdo */
     margin-top: 20px; /* Ajuste del margen superior */
-
 }
 
 .item {
@@ -113,13 +113,13 @@ body {
     margin-bottom: 20px; /* Ajuste del margen inferior */
     text-align: center; /* Alinear al centro */
     position: relative; /* Ajuste de posición */
-    margin-top: 50PX;
+    margin-top: 50px;
 
 }
 
 .barrita input[type="text"] {
     border-radius: 20px; 
-    padding: 10px; 
+    padding: 15px; /* Aumentado el padding */
     border: none; 
     outline: none; 
     width: 300px; 
@@ -128,7 +128,7 @@ body {
 
 .barrita button {
     border-radius: 20px; 
-    padding: 10px 20px; 
+    padding: 15px 25px; /* Aumentado el padding */
     border: none; 
     outline: none; 
     background-color: #000A63; 
@@ -140,4 +140,16 @@ body {
 
 .barrita button:hover {
     background-color: #1E1E96; 
+}
+
+/* Media queries para hacer la página responsive */
+@media screen and (max-width: 768px) {
+    .barrita input[type="text"] {
+        width: 80%; /* Ajuste del ancho en pantallas pequeñas */
+    }
+
+    .barrita button {
+        width: 50%; /* Ajuste del ancho en pantallas pequeñas */
+        margin-top: 10px; /* Espacio entre la barra de búsqueda y el botón en pantallas pequeñas */
+    }
 }

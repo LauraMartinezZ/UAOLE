@@ -1,162 +1,165 @@
 body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    position: relative; /* Añadido para establecer un contexto de apilamiento */
-    color: white;
-    background-position: center top;
-    background-size: cover;
-    font-size: 25px;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  color: white;
+  background-position: center top;
+  background-size: cover;
+  font-size: 25px;
 }
 
 body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(255, 255, 255, 0), #00144795, #001447c2, #001447e7, black); /* Fondo del body */
-    z-index: 1; /* Asegura que este pseudo-elemento esté sobre el fondo pero debajo del contenido */
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0), #00144795, #001447c2, #001447e7, black);
+  z-index: 1;
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 .container {
-    margin: 70px;
-    padding-top: 0;
-    position: relative;
-    z-index: 2; /* Asegura que el contenido esté sobre el pseudo-elemento */
+  margin: 70px;
+  padding-top: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .container h1 {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .item {
-    margin-top: 70px;
-    position: relative;
-    width: 190px;
-    height: 115px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 10px;
+  margin-top: 70px;
+  position: relative;
+  width: 190px;
+  max-width: calc(100% - 20px);
+  height: 115px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
 }
 
 .item a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .item p {
-    text-align: left;
-    text-decoration: none;
-    color: white;
-    text-decoration-line: none;
-    margin-left: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  text-decoration-line: none;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+}
+
+.item:hover p {
+  white-space: normal;
 }
 
 .item img {
-    border-radius: 15px;
-    border: 6px solid #000A63;
-    background-color: white;
-    height: 115px;
-    margin: auto;
+  border-radius: 15px;
+  border: 6px solid #000A63;
+  background-color: white;
+  height: 115px;
+  margin: auto;
 }
 
 .recuadro {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .recuadro:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .carrusel {
-    display: flex;
-    flex-direction: row;
-    width: 95%;
-    justify-content: space-around;
-    margin-bottom: 60px;
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  justify-content: space-around;
+  margin-bottom: 60px;
+}
+
+@media only screen and (max-width: 600px) {
+  .carrusel {
+      
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .item {
+      padding-top: 10%;
+      width: 80%;
+      margin: 10px auto;
+  }
 }
 
 .project-details {
-    margin-bottom: 70px;
-    margin-top: 30px;
-    margin-left: 30px;
+  margin-bottom: 70px;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 
+.likes {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  width: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
 
-.likes{
-    display: flex;
-    text-align: center;
-    flex-direction: row;
-    width: 24px;
-    cursor: pointer;
-    transition: transform 0.3s ease; /* Añadir transición para suavizar el escalado */
+.likes:hover {
+  color: red;
+  transform: scale(1.2);
+}
 
-  }
+.likes p {
+  margin-top: 0;
+  font-size: 24px;
+  margin-left: 5px;
+}
 
-  .likes:hover{
-    color: red;
-    transform: scale(1.2); /* Escalar la imagen al 110% de su tamaño original al pasar el ratón */
-    
-  }
+.liked {
+  color: red;
+}
 
-  
+.liked span {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
+}
 
-  .likes p{
-    margin-top: 0;
-    font-size: 24px;
-    margin-left: 5px;
-  }
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+}
 
-  .liked{
-    color: red;
-  
-  }
-  
-  .liked span{
-    font-variation-settings:
-    'FILL' 1,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24
-  }
+.material-symbols-outlined:hover {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
+}
 
-
-  .material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24
-  }
-  
-  .material-symbols-outlined:hover {
-    font-variation-settings:
-    'FILL' 1,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24
-  }
-
-  /* Estilos para los botones */
 button,
 input[type="submit"] {
-  border: none; /* Elimina el borde predeterminado */
-  border-radius: 10px; /* Hace los bordes redondeados */
-  padding: 15px 30px; /* Aumento del padding */
+  border: none;
+  border-radius: 10px;
+  padding: 15px 30px;
   background-color: #007bff;
-  color: #fff; /* Color del texto blanco */
+  color: #fff;
   cursor: pointer;
-  font-size: 18px; /* Aumento del tamaño del texto */
+  font-size: 18px;
 }
 
 button:hover,
@@ -164,17 +167,16 @@ input[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-/* Estilos de los botones */
 button {
   margin-top: 20px;
-  padding: 15px 30px; /* Aumento del padding */
+  padding: 15px 30px;
   background-color: #007bff;
-  color: #fff; /* Color del texto blanco */
+  color: #fff;
   border: none;
-  border-radius: 25px; /* Ajuste para hacer los botones más redondeados */
+  border-radius: 25px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 18px; /* Aumento del tamaño del texto */
+  font-size: 18px;
 }
 
 button:hover {
@@ -185,3 +187,5 @@ button a {
   color: #fff;
   text-decoration: none;
 }
+
+

@@ -9,28 +9,33 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding: 20px;
 }
 
 .user {
   display: flex;
-  justify-content: start;
   align-items: center;
   padding: 20px;
+  flex-direction: column;
+  text-align: center; /* Center text by default */
 }
 
 .user img {
-  width: 150px;
+  width: 100px;
   border-radius: 50%;
-  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .user h3 {
-  font-size: 36px;
+  font-size: 24px;
 }
 
 .perfil {
-  margin-top: 100px;
-  margin-left: 150px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .detalles {
@@ -43,7 +48,7 @@ body {
 
 .items {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 20px;
   width: 100%;
   padding: 20px;
@@ -56,16 +61,15 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 200px;
+  max-width: 150px;
 }
 
 .item img {
   border-radius: 15px;
   border: 6px solid #000A63;
   background-color: white;
-  width: 190px;
-  height: 115px;
-
+  width: 100%;
+  height: auto;
   margin-bottom: 10px;
 }
 
@@ -79,26 +83,18 @@ body {
 }
 
 .item h3 {
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   text-align: center;
   margin: 0;
 }
 
 .material-symbols-outlined {
-  font-variation-settings:
-      'FILL' 0,
-      'wght' 400,
-      'GRAD' 0,
-      'opsz' 24;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
 .material-symbols-outlined:hover {
-  font-variation-settings:
-      'FILL' 1,
-      'wght' 400,
-      'GRAD' 0,
-      'opsz' 24;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
 .estilo {
@@ -113,3 +109,37 @@ body {
   top: -20px;
   right: 10px;
 }
+
+/* Media queries para pantallas más grandes */
+@media (min-width: 768px) {
+  .user {
+    flex-direction: row;
+    justify-content: flex-start; /* Align items to the start (left) */
+    text-align: left; /* Align text to the left */
+  }
+
+  .user img {
+    width: 150px;
+    margin-right: 20px;
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .user h3 {
+    font-size: 36px;
+  }
+
+  .perfil {
+    margin-top: 100px;
+    margin-left: 150px;
+    align-items: flex-start; /* Align items to the start (left) */
+  }
+
+  .item {
+    max-width: 200px;
+  }
+
+  .item h3 {
+    font-size: 16px;
+  }
+}
+
