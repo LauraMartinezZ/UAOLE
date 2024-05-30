@@ -2,12 +2,12 @@
 // Iniciar sesión
 session_start();
 
+$mensaje_error = '';
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: index.php");
     exit;
 }
-
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             exit;
         } else {
             
-            echo "Credenciales incorrectas. Inténtalo de nuevo.";
+            $mensaje_error = "Credenciales incorrectas. Inténtalo de nuevo.";
         }
 
         
@@ -75,6 +75,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <link rel="stylesheet" href="css/registro.css" />
 <link rel="stylesheet" href="css/header.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Fc5kbb8uOYGtEzvONuOJz6vcW5REHdRJ+t1LjuR8piCLqL2/zD05FQl3AmmFQICqyN5iY4yWvcgf5ZkkEokjEg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+</style>
 </head>
 <body>
 <?php include 'header2.php'; ?>
@@ -82,6 +88,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="login-container">
   <img src="resources/user_icon.png" alt="User Icon">
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <?php 
+        if(!empty($mensaje_error)){
+            echo '<p class="error-message">'.$mensaje_error.'</p>';
+        }
+    ?>
     <input type="text" name="username" placeholder="Enter your username">
     <input type="password" name="password" placeholder="Enter your password">
     <button type="reset">Borrar</button>

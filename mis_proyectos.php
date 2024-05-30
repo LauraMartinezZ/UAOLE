@@ -49,6 +49,7 @@ $conexion->close();
     <link rel="stylesheet" href="css/mis_proyectos.css">
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
 </head>
 <body>
 <?php include 'header.php'; ?>
@@ -63,7 +64,7 @@ $conexion->close();
                     <?php foreach ($proyectos as $proyecto) : ?>
                         <div class="item">
                             <a class="recuadro" href="item.php?id=<?php echo htmlspecialchars($proyecto['id_proyecto']); ?>">
-                                <img src="<?php echo htmlspecialchars($proyecto['portada']); ?>" alt="Portada del proyecto" title="<?php echo htmlspecialchars($proyecto['titulo']); ?>">
+                                <img src="<?php echo htmlspecialchars($proyecto['portada']); ?>" alt="Portada del proyecto">
                                 <h3><?php echo htmlspecialchars($proyecto['titulo']); ?></h3>
                             </a>
                         </div>

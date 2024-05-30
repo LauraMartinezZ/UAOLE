@@ -94,6 +94,11 @@ body::before {
   justify-content: space-around;
   margin-bottom: 60px;
 }
+.login-message a {
+  color: white;
+  font-weight: bold;
+ 
+}
 
 @media only screen and (max-width: 600px) {
   .carrusel {

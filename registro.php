@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Verificar si las contraseñas coinciden
     if ($password !== $confirm_password) {
-        echo "Las contraseñas no coinciden. Por favor, inténtalo de nuevo.";
+        $_SESSION['error_message'] = "Las contraseñas no coinciden";
         exit;
     }
     
@@ -30,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     
     if ($stmt->affected_rows === 1) {
-        echo "Registro exitoso. Ahora puedes iniciar sesión.";
+        $mensaje_error = "Registrado correctamente inicie sesion.";
     } else {
-        echo "Error al registrar el usuario. Por favor, inténtalo de nuevo.";
+        $mensaje_error  = "Error al registrar el usuario. Por favor, inténtalo de nuevo.";
     }
     
     $stmt->close();
@@ -57,6 +57,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="login-container">
   <img src="resources/user_icon.png" alt="User Icon">
   <form action="registro.php" method="POST">
+  <?php 
+        if(!empty($mensaje_error)){
+            echo '<p class="error-message">'.$mensaje_error.'</p>';
+        }
+    ?>
     <input type="text" name="username" placeholder="Enter your username" required>
     <input type="email" name="email" placeholder="Enter your email" required>
     <input type="password" name="password" placeholder="Enter your password" required>

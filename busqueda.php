@@ -1,11 +1,6 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["id_usu"])) {
-    header("Location: login.php");
-    exit();
-}
-
 include 'credentials.php';
 
 $conexion = new mysqli($servidor, $usuario_bd, $contraseña_bd, $nombre_bd);
@@ -21,6 +16,33 @@ function truncateString($string, $length = 10) {
         return substr($string, 0, $length) . '...';
     }
     return $string;
+}
+
+$usuarioId = isset($_SESSION["id_usu"]) ? $_SESSION["id_usu"] : null;
+
+if ($usuarioId !== null) {
+    $sql_proyectos = "SELECT id_proyecto, titulo, portada FROM proyectos WHERE autor = ?";
+    $stmt = $conexion->prepare($sql_proyectos);
+
+    if ($stmt === false) {
+        die("Error en la preparación de la consulta: " . $conexion->error);
+    }
+
+    $stmt->bind_param("i", $usuarioId);
+    $stmt->execute();
+    $resultado_proyectos = $stmt->get_result();
+
+    $proyectos = [];
+    if ($resultado_proyectos->num_rows > 0) {
+        while ($fila = $resultado_proyectos->fetch_assoc()) {
+            $portada = $fila['portada'];
+            $portadaURL = 'data:image/jpeg;base64,' . base64_encode($portada);
+            $fila['portada'] = $portadaURL;
+            $proyectos[] = $fila;
+        }
+    }
+
+    $stmt->close();
 }
 
 if (isset($_POST['busqueda'])) {
@@ -41,29 +63,6 @@ if (isset($_POST['busqueda'])) {
     }
 }
 
-$usuarioId = $_SESSION["id_usu"];
-$sql_proyectos = "SELECT id_proyecto, titulo, portada FROM proyectos WHERE autor = ?";
-$stmt = $conexion->prepare($sql_proyectos);
-
-if ($stmt === false) {
-    die("Error en la preparación de la consulta: " . $conexion->error);
-}
-
-$stmt->bind_param("i", $usuarioId);
-$stmt->execute();
-$resultado_proyectos = $stmt->get_result();
-
-$proyectos = [];
-if ($resultado_proyectos->num_rows > 0) {
-    while ($fila = $resultado_proyectos->fetch_assoc()) {
-        $portada = $fila['portada'];
-        $portadaURL = 'data:image/jpeg;base64,' . base64_encode($portada);
-        $fila['portada'] = $portadaURL;
-        $proyectos[] = $fila;
-    }
-}
-
-$stmt->close();
 $conexion->close();
 ?>
 
@@ -102,7 +101,7 @@ $conexion->close();
                                 </a>
                             </div>
                         <?php endwhile; ?>
-                    <?php else : ?>
+                    <?php elseif (isset($_POST['busqueda']) && empty($result->num_rows)) : ?>
                         <h2>No se encontraron resultados para '<?php echo htmlspecialchars($busqueda); ?>'.</h2>
                     <?php endif; ?>
                 </div>              

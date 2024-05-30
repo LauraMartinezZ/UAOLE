@@ -1,31 +1,48 @@
-
-
 .navbar {
-  background-color: #000A63; 
+  background-color: #000A63;
   position: relative;
   overflow: hidden;
   z-index: 2;
   font-size: 20px;
   transition: left 0.3s ease;
 }
+
 .navbar a {
- 
   float: left;
   display: block;
-  color: #ffffff; 
+  color: #ffffff;
   text-align: center;
   padding: 14px 20px;
   text-decoration: none;
 }
+
 .navbar a:hover {
-  background-color: #ddd; 
+  background-color: #ddd;
   color: #000;
 }
+
 .navbar a.active {
-  background-color: #ddd; 
+  background-color: #ddd;
   color: #000;
 }
+
 .navbar a.right {
   float: right;
 }
 
+/* Ocultar iconos en pantallas grandes */
+@media (min-width: 769px) {
+  .navbar .fa {
+    display: none;
+  }
+   .navbar a i {
+    display: none;
+  }
+}
+
+/* Mostrar iconos solo en dispositivos móviles */
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}

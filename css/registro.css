@@ -5,8 +5,8 @@ body {
     background: linear-gradient(to bottom, #fdc6fd, #000743);
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    min-width: 300px;
+    background-attachment: fixed; /* Esto mantiene el degradado fijo mientras se desplaza */
+   
 }
 
 .login-container {
